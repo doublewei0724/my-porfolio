@@ -36,26 +36,13 @@
 
 <script setup>
 import { ref, computed, onMounted } from "vue";
-
+import ubikeData from "@/data/ubike.json"; // ✅ 注意这行路径正确
+const data = ref(ubikeData);
 const keyword = ref("");
-const data = ref([]);
-
-const fetchData = async () => {
-  try {
-    const res = await fetch("/data/ubike.json");
-    data.value = await res.json();
-  } catch (error) {
-    console.error("载入 ubike 数据失败：", error);
-  }
-};
 
 const filteredList = computed(() =>
   data.value.filter((item) =>
     item.sna.toLowerCase().includes(keyword.value.toLowerCase())
   )
 );
-
-onMounted(() => {
-  fetchData();
-});
 </script>
