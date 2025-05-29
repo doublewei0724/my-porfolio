@@ -6,37 +6,22 @@
     返回主页
   </button> -->
   <!-- header -->
-  <div
-    class="header flex justify-between items-center p-2 relative"
-    :style="`background: url(${baseUrl}images/header_bg.png); background-size: auto 100%`"
-  >
+  <div class="header flex justify-between items-center p-2 relative"
+    :style="`background: url(${baseUrl}images/header_bg.png); background-size: auto 100%`">
     <div class="flex items-center gap-2">
       <img :src="baseUrl + '/images/logo_title.svg'" alt="Logo" class="h-10" />
     </div>
     <div class="flex items-center">
       <div class="flex gap-1 bg-[#eacb83;] text-[#947c52] p-1 rounded-xl">
-        <button
-          :class="currentGameId === 1 ? 'active' : ''"
-          @click="switchGame(1)"
-          class="p-1 text-xs"
-        >
+        <button :class="currentGameId === 1 ? 'active' : ''" @click="switchGame(1)" class="p-1 text-xs">
           动物运动会1
         </button>
-        <button
-          :class="currentGameId === 3 ? 'active' : ''"
-          @click="switchGame(3)"
-          class="p-1 text-xs"
-        >
+        <button :class="currentGameId === 3 ? 'active' : ''" @click="switchGame(3)" class="p-1 text-xs">
           动物运动会3
         </button>
       </div>
-      <van-icon
-        name="wap-nav"
-        size="2rem"
-        color="#5f5d5d"
-        @click="showDropdown = !showDropdown"
-        class="cursor-pointer ml-1"
-      />
+      <van-icon name="wap-nav" size="2rem" color="#5f5d5d" @click="showDropdown = !showDropdown"
+        class="cursor-pointer ml-1" />
     </div>
   </div>
 
@@ -45,11 +30,7 @@
     <van-cell title="开放API" @click="openDialog('api')" />
   </van-popup>
 
-  <van-dialog
-    v-model:show="showDialog"
-    :title="dialogTitle"
-    class="custom-dialog"
-  >
+  <van-dialog v-model:show="showDialog" :title="dialogTitle" class="custom-dialog">
     <PopupContent :contentType="dialogContent" :gameId="currentGameId" />
   </van-dialog>
 
@@ -57,28 +38,18 @@
     <div class="bg-[#f7e1ac] flex flex-col px-2">
       <div
         class="w-56 m-auto px-10 py-2 shadow-lg flex justify-center items-center rounded-b-[30px] bg-gradient-to-t from-[#fdf4e1] to-[#f7e1ac]"
-        style="box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3)"
-      >
+        style="box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3)">
         <img :src="baseUrl + '/images/logo.svg'" alt="" class="w-6 h-6 mr-1" />
         <span class="text-[#61350b] text-lg">彩票频道主办</span>
       </div>
       <div class="flex items-center text-[#61350b] font-black">
-        <img
-          :src="baseUrl + '/images/gold_medal.svg'"
-          alt=""
-          class="w-8 h-8 mr-1"
-        />
+        <img :src="baseUrl + '/images/gold_medal.svg'" alt="" class="w-8 h-8 mr-1" />
         <span class="text-base">参赛选手</span>
       </div>
     </div>
-    <div
-      class="bg-gradient-to-t from-[#fdf4e1] to-[#f7e1ac] p-2 grid grid-cols-3 gap-2"
-    >
-      <div
-        v-for="animal in animals"
-        :key="animal.id"
-        class="relative flex items-end border-[3px] border-white shadow-md pl-0.5 pt-5 rounded-lg bg-opacity-0"
-      >
+    <div class="bg-gradient-to-t from-[#fdf4e1] to-[#f7e1ac] p-2 grid grid-cols-3 gap-2">
+      <div v-for="animal in animals" :key="animal.id"
+        class="relative flex items-end border-[3px] border-white shadow-md pl-0.5 pt-5 rounded-lg bg-opacity-0">
         <img :src="animal.animalImage" :alt="animal.name" class="w-14 h-14" />
         <div class="text-left text-[#61350b] mb-1">
           <div class="font-bold text-base tracking-tighter">
@@ -86,31 +57,21 @@
           </div>
           <div class="text-xs tracking-tight">{{ animal.englishName }}</div>
         </div>
-        <img
-          :src="baseUrl + '/images/medal.gif'"
-          alt="medal"
-          class="absolute top-0 right-0.5 w-7 h-auto"
-        />
-        <div
-          class="absolute top-1.5 right-3 text-white text-sm font-black leading-4"
-        >
+        <img :src="baseUrl + '/images/medal.gif'" alt="medal" class="absolute top-0 right-0.5 w-7 h-auto" />
+        <div class="absolute top-1.5 right-3 text-white text-sm font-black leading-4">
           {{ animal.id }}
         </div>
       </div>
     </div>
   </div>
 
-  <div
-    class="bg-[#f0d8a1] text-[#61350b] text-sm font-bold flex justify-between items-center px-4 py-2"
-  >
+  <div class="bg-[#f0d8a1] text-[#61350b] text-sm font-bold flex justify-between items-center px-4 py-2">
     <div>
       <div>{{ currentTime.date }}</div>
       <div>{{ currentTime.time }}</div>
     </div>
     <div class="flex flex-col">
-      <span class="text-blue-700 font-black text-base"
-        >赛场实况({{ currentDescription.duration }})</span
-      >
+      <span class="text-blue-700 font-black text-base">赛场实况({{ currentDescription.duration }})</span>
       <span>({{ currentDescription.details }})</span>
     </div>
   </div>
@@ -118,14 +79,9 @@
   <!-- iframe -->
   <div class="flex justify-center items-center">
     <div class="overflow-hidden">
-      <iframe
-        :src="iframeSrc"
-        frameborder="0"
-        allowfullscreen
-        :style="{ width: `${iframeSize}px`, height: `${iframeSize}px` }"
-        class="scale-105 pointer-events-none"
-        @mousedown="allowInteraction"
-      ></iframe>
+      <iframe :src="iframeSrc" frameborder="0" allowfullscreen
+        :style="{ width: `${iframeSize}px`, height: `${iframeSize}px` }" class="scale-105 pointer-events-none"
+        @mousedown="allowInteraction"></iframe>
     </div>
   </div>
 
@@ -133,27 +89,14 @@
   <div class="bg-[#efd38f] relative p-2 flex items-center justify-between">
     <div class="text-xl text-[#61350b] font-black">往期数据</div>
     <div>
-      <div
-        class="border px-2 py-1 rounded cursor-pointer bg-white text-[#333333] text-sm"
-        @click="showPicker = true"
-      >
+      <div class="border px-2 py-1 rounded cursor-pointer bg-white text-[#333333] text-sm" @click="showPicker = true">
         <van-icon name="notes-o" size="20" class="mr-2"></van-icon>
         <span>{{ formattedDate }}</span>
       </div>
 
-      <van-popup
-        v-model:show="showPicker"
-        position="bottom"
-        style="z-index: 2009"
-      >
-        <van-date-picker
-          v-model="selectedDate"
-          :columns-type="columnsType"
-          :min-date="minDate"
-          :max-date="maxDate"
-          @confirm="onConfirm"
-          @cancel="showPicker = false"
-        />
+      <van-popup v-model:show="showPicker" position="bottom" style="z-index: 2009">
+        <van-date-picker v-model="selectedDate" :columns-type="columnsType" :min-date="minDate" :max-date="maxDate"
+          @confirm="onConfirm" @cancel="showPicker = false" />
       </van-popup>
     </div>
   </div>
@@ -167,17 +110,11 @@
       <div class="flex-1 border-t border-[#61350b] mx-2"></div>
     </div>
     <div class="flex justify-between items-center">
-      <div
-        v-for="animal in animals"
-        :key="animal.id"
-        class="flex flex-col items-center"
-      >
+      <div v-for="animal in animals" :key="animal.id" class="flex flex-col items-center">
         <img :src="animal.image" :alt="animal.name" class="w-12 h-12 mt-2" />
         <div class="flex items-center mt-1">
-          <div
-            class="w-6 h-6 rounded-full flex justify-center items-center text-white font-bold text-sm"
-            :style="{ backgroundColor: animal.color }"
-          >
+          <div class="w-6 h-6 rounded-full flex justify-center items-center text-white font-bold text-sm"
+            :style="{ backgroundColor: animal.color }">
             {{ animal.id }}
           </div>
           <div class="text-[#61350b] text-sm">{{ animal.name }}</div>
@@ -187,9 +124,7 @@
   </div>
 
   <!-- 开奖历史表格 -->
-  <table
-    class="w-full text-left border-collapse border border-gray-300 bg-white"
-  >
+  <table class="w-full text-left border-collapse border border-gray-300 bg-white">
     <thead>
       <tr class="bg-[#f7e1ac]">
         <th class="w-[16%]">期次</th>
@@ -203,34 +138,21 @@
       </tr>
     </thead>
     <tbody>
-      <tr
-        v-for="result in paginatedResults"
-        :key="result.issue"
-        @click="toggleRow(result.issue)"
-        class="cursor-pointer"
-      >
+      <tr v-for="result in paginatedResults" :key="result.issue" @click="toggleRow(result.issue)"
+        class="cursor-pointer">
         <td class="text-xs text-[#b0b0b0]">{{ result.issue }}</td>
         <td class="text-xs text-[#333333]">
           {{ result.issueTime }}
         </td>
         <td v-for="(value, index) in result.result.split(',')" :key="index">
           <!-- 翻转容器 -->
-          <div
-            class="flip-container"
-            :class="{ flipped: flippedRows.includes(result.issue) }"
-          >
+          <div class="flip-container" :class="{ flipped: flippedRows.includes(result.issue) }">
             <div class="flipper">
               <div class="front">
-                <img
-                  :src="getImagePath(value?.trim())"
-                  alt=""
-                  class="w-8 h-8"
-                />
+                <img :src="getImagePath(value?.trim())" alt="" class="w-8 h-8" />
               </div>
-              <div
-                class="back w-8 h-8 flex items-center justify-center text-white text-base font-bold rounded-full"
-                :style="{ backgroundColor: getBackgroundColor(value?.trim()) }"
-              >
+              <div class="back w-8 h-8 flex items-center justify-center text-white text-base font-bold rounded-full"
+                :style="{ backgroundColor: getBackgroundColor(value?.trim()) }">
                 {{ value?.trim() }}
               </div>
             </div>
@@ -241,15 +163,8 @@
   </table>
 
   <!-- 分页 Pagination -->
-  <div
-    class="flex items-center justify-around bg-gradient-to-b from-[#fdf4e1] to-[#f7e1ac] py-2"
-  >
-    <van-pagination
-      v-model="currentPage"
-      :total-items="totalResults"
-      :show-page-size="3"
-      force-ellipses
-    >
+  <div class="flex items-center justify-around bg-gradient-to-b from-[#fdf4e1] to-[#f7e1ac] py-2">
+    <van-pagination v-model="currentPage" :total-items="totalResults" :show-page-size="3" force-ellipses>
       <template #prev-text>
         <van-icon name="arrow-left" />
       </template>
@@ -263,15 +178,8 @@
 
     <div class="flex items-center text-sm text-[#333]">
       <span>前往</span>
-      <input
-        type="number"
-        v-model="inputPage"
-        @blur="goToPage"
-        placeholder=""
-        min="1"
-        :max="totalPages"
-        class="w-14 p-1 mx-1 rounded-md border border-gray-300 bg-white"
-      />
+      <input type="number" v-model="inputPage" @blur="goToPage" placeholder="" min="1" :max="totalPages"
+        class="w-14 p-1 mx-1 rounded-md border border-gray-300 bg-white" />
       <span>页</span>
     </div>
   </div>
@@ -280,40 +188,16 @@
   <footer class="py-5 px-3 bg-gradient-to-t from-[#fdf4e1] to-[#f7e1ac]">
     <div class="container mx-auto flex justify-evenly items-center">
       <div class="flex">
-        <img
-          :src="baseUrl + '/images/footer_icon_1.svg'"
-          alt=""
-          class="w-auto h-10"
-        />
-        <img
-          :src="baseUrl + '/images/footer_icon_2.svg'"
-          alt=""
-          class="w-auto h-10"
-        />
+        <img :src="baseUrl + '/images/footer_icon_1.svg'" alt="" class="w-auto h-10" />
+        <img :src="baseUrl + '/images/footer_icon_2.svg'" alt="" class="w-auto h-10" />
       </div>
       <div class="flex">
-        <img
-          :src="baseUrl + '/images/footer_icon_3.svg'"
-          alt=""
-          class="w-auto h-10"
-        />
-        <img
-          :src="baseUrl + '/images/footer_icon_4.svg'"
-          alt=""
-          class="w-auto h-10"
-        />
+        <img :src="baseUrl + '/images/footer_icon_3.svg'" alt="" class="w-auto h-10" />
+        <img :src="baseUrl + '/images/footer_icon_4.svg'" alt="" class="w-auto h-10" />
       </div>
       <div class="flex">
-        <img
-          :src="baseUrl + '/images/footer_icon_5.svg'"
-          alt=""
-          class="w-auto h-10"
-        />
-        <img
-          :src="baseUrl + '/images/footer_icon_6.svg'"
-          alt=""
-          class="w-auto h-10"
-        />
+        <img :src="baseUrl + '/images/footer_icon_5.svg'" alt="" class="w-auto h-10" />
+        <img :src="baseUrl + '/images/footer_icon_6.svg'" alt="" class="w-auto h-10" />
       </div>
     </div>
   </footer>
@@ -583,6 +467,7 @@ button.active {
   color: #5c584c;
   border: none;
 }
+
 thead th {
   border: 1px solid #facd68;
   padding: 0.25rem;
@@ -591,27 +476,33 @@ thead th {
   color: #61350b;
   font-weight: 900;
 }
+
 thead th:nth-child(odd) {
   background: #facd68;
 }
+
 tbody td {
   border: 1px solid #facd68;
   padding: 0.25rem;
   text-align: center;
 }
+
 tbody td:nth-child(odd) {
   background: #fffdf1;
 }
+
 tbody td img {
   margin: auto;
   object-fit: contain;
 }
+
 .flip-container {
   perspective: 800px;
   width: 2rem;
   height: 2rem;
   margin: 0 auto;
 }
+
 .flipper {
   position: relative;
   width: 100%;
@@ -619,9 +510,11 @@ tbody td img {
   transform-style: preserve-3d;
   transition: transform 0.4s ease;
 }
+
 .flip-container.flipped .flipper {
   transform: rotateY(180deg);
 }
+
 .front,
 .back {
   position: absolute;
@@ -633,6 +526,7 @@ tbody td img {
   align-items: center;
   justify-content: center;
 }
+
 .back {
   transform: rotateY(180deg);
 }
