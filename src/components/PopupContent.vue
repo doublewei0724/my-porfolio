@@ -21,32 +21,32 @@
             <li class="player-item">
               <span class="player-number bg-red-500">1</span>
               <span class="player-name">号选手 ➤ 傻小宝</span>
-              <img src="/my-porfolio/images/animal_1.png" class="player-images" />
+              <img src="/images/animal_1.png" class="player-images" />
             </li>
             <li class="player-item">
               <span class="player-number bg-blue-500">2</span>
               <span class="player-name">号选手 ➤ 鲸 马</span>
-              <img src="/my-porfolio/images/animal_2.png" class="player-images" />
+              <img src="/images/animal_2.png" class="player-images" />
             </li>
             <li class="player-item">
               <span class="player-number bg-green-500">3</span>
               <span class="player-name">号选手 ➤ 票 票</span>
-              <img src="/my-porfolio/images/animal_3.png" class="player-images" />
+              <img src="/images/animal_3.png" class="player-images" />
             </li>
             <li class="player-item">
               <span class="player-number bg-yellow-500">4</span>
               <span class="player-name">号选手 ➤ 虾 仔</span>
-              <img src="/my-porfolio/images/animal_4.png" class="player-images" />
+              <img src="/images/animal_4.png" class="player-images" />
             </li>
             <li class="player-item">
               <span class="player-number bg-purple-500">5</span>
               <span class="player-name">号选手 ➤ 支小宝</span>
-              <img src="/my-porfolio/images/animal_5.png" class="player-images" />
+              <img src="/images/animal_5.png" class="player-images" />
             </li>
             <li class="player-item">
               <span class="player-number bg-orange-500">6</span>
               <span class="player-name">号选手 ➤ 欢 猴</span>
-              <img src="/my-porfolio/images/animal_6.png" class="player-images" />
+              <img src="/images/animal_6.png" class="player-images" />
             </li>
           </ul>
           <p class="text-sm text-gray-700 mt-4 text-left">
@@ -62,8 +62,8 @@
                 支付宝观看比赛：在支付宝APP首页，搜索【动物运动会】即可进行观看。
               </p>
               <div class="flex">
-                <img src="/my-porfolio/images/zfb_1.png" alt="" class="w-1/2" />
-                <img src="/my-porfolio/images/zfb_2.png" alt="" class="w-1/2" />
+                <img src="/images/zfb_1.png" alt="" class="w-1/2" />
+                <img src="/images/zfb_2.png" alt="" class="w-1/2" />
               </div>
             </li>
             <!-- 三分 -->
@@ -73,21 +73,21 @@
                 ➔【动物运动会】
               </p>
               <div class="flex justify-center">
-                <img src="/my-porfolio/images/zfb_4.png" alt="" class="w-1/2" />
+                <img src="/images/zfb_4.png" alt="" class="w-1/2" />
               </div>
             </li>
             <li>
               <div>
                 <p class="text-sm text-gray-700 mb-2">支付宝扫码观看比赛</p>
                 <div class="flex justify-center">
-                  <img src="/my-porfolio/images/zfb_qr.png" alt="" class="w-1/2" />
+                  <img src="/images/zfb_qr.png" alt="" class="w-1/2" />
                 </div>
               </div>
               <!-- 三分 -->
               <div v-if="gameId === 3" class="mt-2">
                 <p class="text-sm text-gray-700 mb-2">淘宝APP扫码观看</p>
                 <div class="flex justify-center">
-                  <img src="/my-porfolio/images/tb_qr.png" alt="" class="w-3/4" />
+                  <img src="/images/tb_qr.png" alt="" class="w-3/4" />
                 </div>
               </div>
             </li>
@@ -99,7 +99,7 @@
                   target="_blank"
                   class="flex justify-center"
                 >
-                  <img src="/my-porfolio/images/zfb.svg" alt="" class="w-full" />
+                  <img src="/images/zfb.svg" alt="" class="w-full" />
                 </a>
                 <!-- 三分 -->
                 <a
@@ -108,7 +108,7 @@
                   target="_blank"
                   class="flex justify-center"
                 >
-                  <img src="/my-porfolio/images/tb.svg" alt="" class="w-full" />
+                  <img src="/images/tb.svg" alt="" class="w-full" />
                 </a>
               </div>
             </li>
@@ -186,17 +186,17 @@
         <div class="w-11/12 m-auto p-2 bg-white">
           <h2 class="text-lg text-green-600 mb-4 text-left">最新比赛结果</h2>
           <div class="mb-4 text-left text-sm">
-            <img src="/my-porfolio/images/iframeImg.png" class="w-full" />
-						<img src="/my-porfolio/images/api_1.png" class="w-full" />
-						<img src="/my-porfolio/images/api_2.png" class="w-full" />
-						<img src="/my-porfolio/images/api_3.png" class="w-full" />
-						<img src="/my-porfolio/images/api_4.png" class="w-full" />
-						<img src="/my-porfolio/images/api_5.png" class="w-full" />
-						<img src="/my-porfolio/images/api_6.png" class="w-full" />
-						<img src="/my-porfolio/images/api_7.png" class="w-full" />
-						<img src="/my-porfolio/images/api_8.png" class="w-full" />
-						<img src="/my-porfolio/images/api_9.png" class="w-full" />
-						<img src="/my-porfolio/images/api_10.png" class="w-full" />
+            <img src="/images/iframeImg.png" class="w-full" />
+						<img src="/images/api_1.png" class="w-full" />
+						<img src="/images/api_2.png" class="w-full" />
+						<img src="/images/api_3.png" class="w-full" />
+						<img src="/images/api_4.png" class="w-full" />
+						<img src="/images/api_5.png" class="w-full" />
+						<img src="/images/api_6.png" class="w-full" />
+						<img src="/images/api_7.png" class="w-full" />
+						<img src="/images/api_8.png" class="w-full" />
+						<img src="/images/api_9.png" class="w-full" />
+						<img src="/images/api_10.png" class="w-full" />
 						</div>
         </div>
       </div>
