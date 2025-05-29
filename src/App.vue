@@ -2,10 +2,7 @@
   <!-- header -->
   <div
     class="header flex justify-between items-center p-2 relative"
-    style="
-      background: url(/images/header_bg.png);
-      background-size: auto 100%;
-    "
+    :style="`background: url(${baseUrl}images/header_bg.png); background-size: auto 100%`"
   >
     <div class="flex items-center gap-2">
       <img src="/images/logo_title.svg" alt="Logo" class="h-10" />
@@ -273,40 +270,16 @@
   <footer class="py-5 px-3 bg-gradient-to-t from-[#fdf4e1] to-[#f7e1ac]">
     <div class="container mx-auto flex justify-evenly items-center">
       <div class="flex">
-        <img
-          src="/images/footer_icon_1.svg"
-          alt=""
-          class="w-auto h-10"
-        />
-        <img
-          src="/images/footer_icon_2.svg"
-          alt=""
-          class="w-auto h-10"
-        />
+        <img src="/images/footer_icon_1.svg" alt="" class="w-auto h-10" />
+        <img src="/images/footer_icon_2.svg" alt="" class="w-auto h-10" />
       </div>
       <div class="flex">
-        <img
-          src="/images/footer_icon_3.svg"
-          alt=""
-          class="w-auto h-10"
-        />
-        <img
-          src="/images/footer_icon_4.svg"
-          alt=""
-          class="w-auto h-10"
-        />
+        <img src="/images/footer_icon_3.svg" alt="" class="w-auto h-10" />
+        <img src="/images/footer_icon_4.svg" alt="" class="w-auto h-10" />
       </div>
       <div class="flex">
-        <img
-          src="/images/footer_icon_5.svg"
-          alt=""
-          class="w-auto h-10"
-        />
-        <img
-          src="/images/footer_icon_6.svg"
-          alt=""
-          class="w-auto h-10"
-        />
+        <img src="/images/footer_icon_5.svg" alt="" class="w-auto h-10" />
+        <img src="/images/footer_icon_6.svg" alt="" class="w-auto h-10" />
       </div>
     </div>
   </footer>
@@ -318,6 +291,7 @@ import { fetchResults } from "./services/api.js";
 import PopupContent from "@/components/PopupContent.vue";
 import { showToast } from "vant";
 
+const baseUrl = import.meta.env.BASE_URL;
 const results = ref([]);
 const flippedRows = ref([]);
 const currentGameId = ref(1);
@@ -356,48 +330,48 @@ const animals = ref([
     name: "饿小宝",
     englishName: "Exiaobao",
     color: "#d03125",
-    image: "/images/icon_1.png",
-    animalImage: "/images/animal_1.png",
+    image: baseUrl + "/images/icon_1.png",
+    animalImage: baseUrl + "/images/animal_1.png",
   },
   {
     id: 2,
     name: "盒马",
     englishName: "Freshipoo",
     color: "#134e91",
-    image: "/images/icon_2.png",
-    animalImage: "/images/animal_2.png",
+    image: baseUrl + "/images/icon_2.png",
+    animalImage: baseUrl + "/images/animal_2.png",
   },
   {
     id: 3,
     name: "票票",
     englishName: "Piaopiao",
     color: "#008b8b",
-    image: "/images/icon_3.png",
-    animalImage: "/images/animal_3.png",
+    image: baseUrl + "/images/icon_3.png",
+    animalImage: baseUrl + "/images/animal_3.png",
   },
   {
     id: 4,
     name: "虾仔",
     englishName: "Xiazai",
     color: "#f6e58d",
-    image: "/images/icon_4.png",
-    animalImage: "/images/animal_4.png",
+    image: baseUrl + "/images/icon_4.png",
+    animalImage: baseUrl + "/images/animal_4.png",
   },
   {
     id: 5,
     name: "支小宝",
     englishName: "Zhixiaobao",
     color: "#8b008b",
-    image: "/images/icon_5.png",
-    animalImage: "/images/animal_5.png",
+    image: baseUrl + "/images/icon_5.png",
+    animalImage: baseUrl + "/images/animal_5.png",
   },
   {
     id: 6,
     name: "欢猩",
     englishName: "Huanxing",
     color: "#8b4513",
-    image: "/images/icon_6.png",
-    animalImage: "/images/animal_6.png",
+    image: baseUrl + "/images/icon_6.png",
+    animalImage: baseUrl + "/images/animal_6.png",
   },
 ]);
 
@@ -533,7 +507,7 @@ const currentDescription = computed(() => descriptions[currentGameId.value]);
 // 获取图片路径
 const getImagePath = (number) => {
   if (!number || isNaN(number)) return "";
-  return `/images/history_${number}.png`;
+  return `${baseUrl}images/history_${number}.png`;
 };
 
 // frame 宽度

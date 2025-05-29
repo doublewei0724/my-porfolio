@@ -21,12 +21,6 @@
   .custom-dialog .van-dialog__content {
     @apply max-h-[60vh] overflow-y-auto;
   }
-  .player-number {
-    @apply w-6 h-8 ml-2 flex items-center justify-center rounded-full text-white font-bold mr-2;
-  }
-  .player-name {
-    @apply text-sm font-medium;
-  }
 }
 
 :root {
