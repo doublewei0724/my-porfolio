@@ -1,10 +1,12 @@
 <template>
-  <!-- <button
-    @click="$router.push('/')"
-    class="text-white bg-gray-700 px-2 py-1 rounded m-1"
-  >
-    返回主页
-  </button> -->
+  <div class="w-full text-left">
+    <button
+      @click="$router.push('/')"
+      class="text-white text-sm bg-gray-700 px-2 py-1 rounded m-1"
+    >
+      返回主页
+    </button>
+  </div>
   <!-- header -->
   <div class="header flex justify-between items-center p-2 relative"
     :style="`background: url(${baseUrl}images/header_bg.png); background-size: auto 100%`">
