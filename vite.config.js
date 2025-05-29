@@ -9,6 +9,7 @@ export default defineConfig({
       '@': '/src',
     },
   },
+  base: '/my-porfolio/',
   plugins: [
     vue(),
     Components({

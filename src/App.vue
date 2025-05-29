@@ -3,12 +3,12 @@
   <div
     class="header flex justify-between items-center p-2 relative"
     style="
-      background: url(/src/assets/images/header_bg.png);
+      background: url(/images/header_bg.png);
       background-size: auto 100%;
     "
   >
     <div class="flex items-center gap-2">
-      <img src="@/assets/images/logo_title.svg" alt="Logo" class="h-10" />
+      <img src="/images/logo_title.svg" alt="Logo" class="h-10" />
     </div>
     <div class="flex items-center">
       <div class="flex gap-1 bg-[#eacb83;] text-[#947c52] p-1 rounded-xl">
@@ -56,11 +56,11 @@
         class="w-56 m-auto px-10 py-2 shadow-lg flex justify-center items-center rounded-b-[30px] bg-gradient-to-t from-[#fdf4e1] to-[#f7e1ac]"
         style="box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3)"
       >
-        <img src="@/assets/images/logo.svg" alt="" class="w-6 h-6 mr-1" />
+        <img src="/images/logo.svg" alt="" class="w-6 h-6 mr-1" />
         <span class="text-[#61350b] text-lg">彩票频道主办</span>
       </div>
       <div class="flex items-center text-[#61350b] font-black">
-        <img src="@/assets/images/gold_medal.svg" alt="" class="w-8 h-8 mr-1" />
+        <img src="/images/gold_medal.svg" alt="" class="w-8 h-8 mr-1" />
         <span class="text-base">参赛选手</span>
       </div>
     </div>
@@ -80,7 +80,7 @@
           <div class="text-xs tracking-tight">{{ animal.englishName }}</div>
         </div>
         <img
-          src="@/assets/images/medal.gif"
+          src="/images/medal.gif"
           alt="medal"
           class="absolute top-0 right-0.5 w-7 h-auto"
         />
@@ -274,36 +274,36 @@
     <div class="container mx-auto flex justify-evenly items-center">
       <div class="flex">
         <img
-          src="@/assets/images/footer_icon_1.svg"
+          src="/images/footer_icon_1.svg"
           alt=""
           class="w-auto h-10"
         />
         <img
-          src="@/assets/images/footer_icon_2.svg"
-          alt=""
-          class="w-auto h-10"
-        />
-      </div>
-      <div class="flex">
-        <img
-          src="@/assets/images/footer_icon_3.svg"
-          alt=""
-          class="w-auto h-10"
-        />
-        <img
-          src="@/assets/images/footer_icon_4.svg"
+          src="/images/footer_icon_2.svg"
           alt=""
           class="w-auto h-10"
         />
       </div>
       <div class="flex">
         <img
-          src="@/assets/images/footer_icon_5.svg"
+          src="/images/footer_icon_3.svg"
           alt=""
           class="w-auto h-10"
         />
         <img
-          src="@/assets/images/footer_icon_6.svg"
+          src="/images/footer_icon_4.svg"
+          alt=""
+          class="w-auto h-10"
+        />
+      </div>
+      <div class="flex">
+        <img
+          src="/images/footer_icon_5.svg"
+          alt=""
+          class="w-auto h-10"
+        />
+        <img
+          src="/images/footer_icon_6.svg"
           alt=""
           class="w-auto h-10"
         />
@@ -356,48 +356,48 @@ const animals = ref([
     name: "饿小宝",
     englishName: "Exiaobao",
     color: "#d03125",
-    image: "/src/assets/images/icon_1.png",
-    animalImage: "/src/assets/images/animal_1.png",
+    image: "/images/icon_1.png",
+    animalImage: "/images/animal_1.png",
   },
   {
     id: 2,
     name: "盒马",
     englishName: "Freshipoo",
     color: "#134e91",
-    image: "/src/assets/images/icon_2.png",
-    animalImage: "/src/assets/images/animal_2.png",
+    image: "/images/icon_2.png",
+    animalImage: "/images/animal_2.png",
   },
   {
     id: 3,
     name: "票票",
     englishName: "Piaopiao",
     color: "#008b8b",
-    image: "/src/assets/images/icon_3.png",
-    animalImage: "/src/assets/images/animal_3.png",
+    image: "/images/icon_3.png",
+    animalImage: "/images/animal_3.png",
   },
   {
     id: 4,
     name: "虾仔",
     englishName: "Xiazai",
     color: "#f6e58d",
-    image: "/src/assets/images/icon_4.png",
-    animalImage: "/src/assets/images/animal_4.png",
+    image: "/images/icon_4.png",
+    animalImage: "/images/animal_4.png",
   },
   {
     id: 5,
     name: "支小宝",
     englishName: "Zhixiaobao",
     color: "#8b008b",
-    image: "/src/assets/images/icon_5.png",
-    animalImage: "/src/assets/images/animal_5.png",
+    image: "/images/icon_5.png",
+    animalImage: "/images/animal_5.png",
   },
   {
     id: 6,
     name: "欢猩",
     englishName: "Huanxing",
     color: "#8b4513",
-    image: "/src/assets/images/icon_6.png",
-    animalImage: "/src/assets/images/animal_6.png",
+    image: "/images/icon_6.png",
+    animalImage: "/images/animal_6.png",
   },
 ]);
 
@@ -533,7 +533,7 @@ const currentDescription = computed(() => descriptions[currentGameId.value]);
 // 获取图片路径
 const getImagePath = (number) => {
   if (!number || isNaN(number)) return "";
-  return `/src/assets/images/history_${number}.png`;
+  return `/images/history_${number}.png`;
 };
 
 // frame 宽度
