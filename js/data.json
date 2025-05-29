@@ -1,0 +1,71 @@
+{
+  "today": {
+    "bet": [
+      { "name": "自开彩", "value": 10 },
+      { "name": "官方彩", "value": 5 },
+      { "name": "棋牌", "value": 15 },
+      { "name": "捕鱼", "value": 8 },
+      { "name": "电子", "value": 12 },
+      { "name": "视讯", "value": 6 },
+      { "name": "体育", "value": 4 },
+      { "name": "电竞", "value": 10 }
+    ],
+    "profit": [
+      { "name": "自开彩", "value": 2 },
+      { "name": "官方彩", "value": -1 },
+      { "name": "棋牌", "value": 3 },
+      { "name": "捕鱼", "value": -2 },
+      { "name": "电子", "value": 1.5 },
+      { "name": "视讯", "value": -1.2 },
+      { "name": "体育", "value": 0.5 },
+      { "name": "电竞", "value": 1 },
+      { "name": "总盈亏", "value": 3.8 }
+    ]
+  },
+  "week": {
+    "bet": [
+      { "name": "自开彩", "value": 70 },
+      { "name": "官方彩", "value": 40 },
+      { "name": "棋牌", "value": 50 },
+      { "name": "捕鱼", "value": 30 },
+      { "name": "电子", "value": 90 },
+      { "name": "视讯", "value": 60 },
+      { "name": "体育", "value": 35 },
+      { "name": "电竞", "value": 20 }
+    ],
+    "profit": [
+      { "name": "自开彩", "value": 8 },
+      { "name": "官方彩", "value": -3 },
+      { "name": "棋牌", "value": 6 },
+      { "name": "捕鱼", "value": -4 },
+      { "name": "电子", "value": 5 },
+      { "name": "视讯", "value": -3.5 },
+      { "name": "体育", "value": 2 },
+      { "name": "电竞", "value": 1.5 },
+      { "name": "总盈亏", "value": 12 }
+    ]
+  },
+  "month": {
+    "bet": [
+      { "name": "自开彩", "value": 200 },
+      { "name": "官方彩", "value": 160 },
+      { "name": "棋牌", "value": 180 },
+      { "name": "捕鱼", "value": 130 },
+      { "name": "电子", "value": 260 },
+      { "name": "视讯", "value": 220 },
+      { "name": "体育", "value": 90 },
+      { "name": "电竞", "value": 110 }
+    ],
+    "profit": [
+      { "name": "自开彩", "value": 25 },
+      { "name": "官方彩", "value": -12 },
+      { "name": "棋牌", "value": 18 },
+      { "name": "捕鱼", "value": -9 },
+      { "name": "电子", "value": 16 },
+      { "name": "视讯", "value": -10 },
+      { "name": "体育", "value": 7 },
+      { "name": "电竞", "value": 5 },
+      { "name": "总盈亏", "value": 40 }
+    ]
+  }
+}
