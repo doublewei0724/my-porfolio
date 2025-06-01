@@ -56,30 +56,26 @@
         </div>
         <div>
           <h3 class="font-semibold text-base mb-1">联系我们</h3>
-          <p>Telegram:</p>
           <p>
-            <a href="https://t.me/FPGgm" target="_blank" class="text-blue-600 hover:underline">@FPGgm</a>
-          </p>
-          <p>
-            <a href="https://t.me/FPGgaming" target="_blank" class="text-blue-600 hover:underline">@FPGgaming</a>
+            Telegram:
+            <a href="javascript:;" class="text-blue-600 hover:underline">@xxxxxx</a>
           </p>
         </div>
-        <div>
-          <h3 class="font-semibold text-base mb-1 invisible">占位標題</h3>
+        <div class="flex flex-col justify-center"> 
           <p>
             Email:
-            <a href="mailto:fhbwfenghuang@gmail.com" class="text-blue-600 hover:underline">fhbwfenghuang@gmail.com</a>
+            <a href="javascript:;" class="text-blue-600 hover:underline">doublewei0724@gmail.com</a>
           </p>
           <p>
             WhatsApp:
-            <a href="https://wa.me/639296255555" target="_blank" class="text-blue-600 hover:underline">+639296255555</a>
+            <a href="javascript:;" class="text-blue-600 hover:underline">+1234567890</a>
           </p>
         </div>
         <div class="flex flex-col justify-center">
           <h3 class="font-semibold text-base mb-1">关注我们</h3>
           <p>
             官方网站:
-            <a href="https://fhbw.cc/" class="text-blue-600 hover:underline">https://fhbw.cc/</a>
+            <a href="javascript:;" class="text-blue-600 hover:underline">xxx.com</a>
           </p>
         </div>
       </div>
