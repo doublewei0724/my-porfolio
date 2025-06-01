@@ -1,38 +1,40 @@
 <template>
-  <div class="w-full text-left">
-    <button
-      @click="$router.push('/')"
-      class="text-white text-sm bg-gray-700 px-2 py-1 rounded m-1"
-    >
-      返回主页
-    </button>
-  </div>
-  <div class="max-w-[1000px] mx-auto px-2 space-y-12 py-4 bg-white text-black">
-    <!-- 通用图表组件 -->
-    <div v-for="chart in charts" :key="chart.id">
-      <div class="text-center text-xl font-bold mb-3">{{ chart.title }}</div>
+  <div class="max-w-[1000px] m-auto">
+    <div class="w-full text-left">
+      <button
+        @click="$router.push('/')"
+        class="text-white text-sm bg-gray-700 px-2 py-1 rounded m-1"
+      >
+        返回主页
+      </button>
+    </div>
+    <div class="max-w-[1000px] mx-auto px-2 space-y-12 py-4 bg-white text-black">
+      <!-- 通用图表组件 -->
+      <div v-for="chart in charts" :key="chart.id">
+        <div class="text-center text-xl font-bold mb-3">{{ chart.title }}</div>
 
-      <div class="text-center space-x-2 mb-3">
-        <button
-          v-for="type in chart.types"
-          :key="type"
-          @click="
-            chart.active = type;
-            nextTick(() => renderChart(chart));
-          "
-          class="px-3 py-1 rounded text-sm"
-          :class="
-            type === chart.active ? 'bg-blue-500 text-white' : 'bg-gray-200'
-          "
-        >
-          {{ labelMap[type] }}
-        </button>
+        <div class="text-center space-x-2 mb-3">
+          <button
+            v-for="type in chart.types"
+            :key="type"
+            @click="
+              chart.active = type;
+              nextTick(() => renderChart(chart));
+            "
+            class="px-3 py-1 rounded text-sm"
+            :class="
+              type === chart.active ? 'bg-blue-500 text-white' : 'bg-gray-200'
+            "
+          >
+            {{ labelMap[type] }}
+          </button>
+        </div>
+
+        <div
+          :id="chart.id"
+          class="w-full h-[400px] md:h-[480px] xl:h-[520px]"
+        ></div>
       </div>
-
-      <div
-        :id="chart.id"
-        class="w-full h-[400px] md:h-[480px] xl:h-[520px]"
-      ></div>
     </div>
   </div>
 </template>
@@ -229,7 +231,5 @@ onMounted(() => {
 </script>
 
 <style>
-#app {
-  max-width: 1000px !important;
-}
+
 </style>
