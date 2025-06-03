@@ -14,7 +14,7 @@
         <img :src="baseUrl + 'kjw/images/logo_title.svg'" alt="Logo" class="h-10" />
       </div>
       <div class="flex items-center">
-        <div class="flex gap-1 bg-[#eacb83;] text-[#947c52] p-1 rounded-xl">
+        <div class="flex gap-1 bg-[#eacb83] text-[#947c52] p-1 rounded-xl">
           <button :class="currentGameId === 1 ? 'active' : ''" @click="switchGame(1)" class="p-1 text-xs">
             动物运动会1
           </button>
@@ -97,7 +97,7 @@
         </div>
 
         <van-popup v-model:show="showPicker" position="bottom" style="z-index: 2009">
-          <van-date-picker v-model="selectedDate" :columns-type="columnsType" :min-date="minDate" :max-date="maxDate"
+          <van-date-picker v-model:show="selectedDate" :columns-type="columnsType" :min-date="minDate" :max-date="maxDate"
             @confirm="onConfirm" @cancel="showPicker = false" />
         </van-popup>
       </div>
@@ -139,7 +139,7 @@
           <th class="w-[12%]">No6</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody v-if="paginatedResults.length">
         <tr v-for="result in paginatedResults" :key="result.issue" @click="toggleRow(result.issue)"
           class="cursor-pointer">
           <td class="text-xs text-[#b0b0b0]">{{ result.issue }}</td>
@@ -162,6 +162,11 @@
           </td>
         </tr>
       </tbody>
+      <tbody v-else>
+        <tr>
+          <td colspan="8" class="text-center text-gray-500 py-4">暂无数据</td>
+        </tr>
+      </tbody>
     </table>
 
     <!-- 分页 Pagination -->
@@ -180,7 +185,7 @@
 
       <div class="flex items-center text-sm text-[#333]">
         <span>前往</span>
-        <input type="number" v-model="inputPage" @blur="goToPage" placeholder="" min="1" :max="totalPages"
+        <input type="number" v-model="inputPage" @blur="goToPage" @keyup.enter="goToPage" placeholder="" min="1" :max="totalPages"
           class="w-14 p-1 mx-1 rounded-md border border-gray-300 bg-white" />
         <span>页</span>
       </div>

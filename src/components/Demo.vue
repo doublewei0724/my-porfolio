@@ -1,10 +1,7 @@
 <template>
-  <div class="bg-[#f5f5f5] text-black max-w-[1200px] m-auto">
+  <div class="text-black max-w-[1200px] m-auto">
     <div class="w-full text-left">
-      <button
-        @click="$router.push('/')"
-        class="text-white text-sm bg-gray-700 px-2 py-1 rounded m-1"
-      >
+      <button @click="$router.push('/')" class="text-white text-sm bg-gray-700 px-2 py-1 rounded m-1">
         返回主页
       </button>
     </div>
@@ -15,7 +12,7 @@
       <p class="text-[20px] text-gray-500 tracking-widest">产品案例</p>
     </div>
 
-    <div class="px-1 py-4 mx-auto space-y-12">
+    <div class="px-1 py-4 mx-auto space-y-12 bg-[#f5f5f5]">
       <div v-for="(group, gIndex) in templateGroups" :key="gIndex">
         <p class="text-blue-600 text-xl font-bold mb-1">{{ group.title }}</p>
         <p class="text-red-600 text-base mb-3">{{ group.subtitle }}</p>
@@ -61,7 +58,7 @@
             <a href="javascript:;" class="text-blue-600 hover:underline">@xxxxxx</a>
           </p>
         </div>
-        <div class="flex flex-col justify-center"> 
+        <div class="flex flex-col justify-center">
           <p>
             Email:
             <a href="javascript:;" class="text-blue-600 hover:underline">doublewei0724@gmail.com</a>
@@ -87,12 +84,14 @@
 
     <div v-if="showModal" class="fixed inset-0 z-50 bg-black/80 flex justify-center items-center overflow-y-auto"
       @click="closeModal">
-      <img :src="modalImage" :class="modalImageClass" class="object-contain my-10" />
+      <div class="flex h-[800px] overflow-y-auto">
+        <img :src="modalImage" :class="modalImageClass" class="object-cover m-auto" />
+      </div>
     </div>
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import { ref, onMounted, computed } from "vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Navigation } from "swiper/modules";
@@ -103,8 +102,7 @@ const baseUrl = import.meta.env.BASE_URL;
 const isMobile = ref(false);
 const showModal = ref(false);
 const modalImage = ref("");
-const modalType = ref<"h5" | "pc">("h5");
-const swiperRefs = ref<any[]>([]);
+const modalType = ref("h5");
 
 onMounted(() => {
   const updateIsMobile = () => {
@@ -113,18 +111,33 @@ onMounted(() => {
   updateIsMobile();
 });
 
+function disableBodyScroll() {
+  document.body.style.overflow = "hidden";
+  document.addEventListener("touchmove", preventScroll, { passive: false });
+}
 
-function showBig(src: string, type: "h5" | "pc") {
+function enableBodyScroll() {
+  document.body.style.overflow = "";
+  document.removeEventListener("touchmove", preventScroll);
+}
+
+function preventScroll(e) {
+  e.preventDefault();
+}
+
+function showBig(src, type) {
   modalImage.value = src;
   modalType.value = type;
   showModal.value = true;
+  disableBodyScroll();
 }
 
 function closeModal() {
   showModal.value = false;
+  enableBodyScroll();
 }
 
-function onSwiperInit(swiper: any) {
+function onSwiperInit(swiper) {
   swiper.navigation?.destroy();
   swiper.navigation?.init();
   swiper.navigation?.update();
@@ -133,14 +146,14 @@ function onSwiperInit(swiper: any) {
 const modalImageClass = computed(() => {
   if (isMobile.value) {
     return "w-[85%] h-auto";
-  }
+  } else {
+    if (modalType.value === "h5") {
+      return "w-[350px] h-auto";
+    }
 
-  if (modalType.value === "h5") {
-    return "w-[35%] h-auto";
-  }
-
-  if (modalType.value === "pc") {
-    return "w-[50%]";
+    if (modalType.value === "pc") {
+      return "w-[800px]";
+    }
   }
 
   return "";

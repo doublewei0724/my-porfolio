@@ -1,39 +1,21 @@
 <template>
   <div class="max-w-[1000px] m-auto">
     <div class="w-full text-left">
-      <button
-        @click="$router.push('/')"
-        class="text-white text-sm bg-gray-700 px-2 py-1 rounded m-1"
-      >
+      <button @click="$router.push('/')" class="text-white text-sm bg-gray-700 px-2 py-1 rounded m-1">
         返回主页
       </button>
     </div>
     <div class="max-w-[1000px] mx-auto px-2 space-y-12 py-4 bg-white text-black">
-      <!-- 通用图表组件 -->
       <div v-for="chart in charts" :key="chart.id">
         <div class="text-center text-xl font-bold mb-3">{{ chart.title }}</div>
-
         <div class="text-center space-x-2 mb-3">
-          <button
-            v-for="type in chart.types"
-            :key="type"
-            @click="
-              chart.active = type;
-              nextTick(() => renderChart(chart));
-            "
-            class="px-3 py-1 rounded text-sm"
-            :class="
-              type === chart.active ? 'bg-blue-500 text-white' : 'bg-gray-200'
-            "
-          >
+          <button v-for="type in chart.types" :key="type" @click="chart.active = type;
+          nextTick(() => renderChart(chart));
+          "class="px-3 py-1 rounded text-sm" :class="type === chart.active ? 'bg-blue-500 text-white' : 'bg-gray-200'">
             {{ labelMap[type] }}
           </button>
         </div>
-
-        <div
-          :id="chart.id"
-          class="w-full h-[400px] md:h-[480px] xl:h-[520px]"
-        ></div>
+        <div :id="chart.id" class="w-full h-[400px] md:h-[480px] xl:h-[520px]"></div>
       </div>
     </div>
   </div>
@@ -41,17 +23,15 @@
 
 <script setup>
 import * as echarts from "echarts";
-import { reactive, nextTick, onMounted } from "vue";
+import { reactive, nextTick, onMounted, onUnmounted } from "vue";
 const base = import.meta.env.BASE_URL;
 
-// 显示标签
 const labelMap = {
   today: "今天",
   week: "近7天",
   month: "近30天",
 };
 
-// 所有图表配置
 const charts = reactive([
   {
     id: "bet-chart",
@@ -83,12 +63,18 @@ const charts = reactive([
   },
 ]);
 
+const handleResize = () => {
+  charts.forEach((c) => {
+    const chart = echarts.getInstanceByDom(document.getElementById(c.id));
+    if (chart) chart.resize();
+  });
+};
+
 async function fetchData(url) {
   const res = await fetch(url);
   return await res.json();
 }
 
-// 各图表绘制函数
 function renderChart(chart) {
   const el = document.getElementById(chart.id);
   if (!el) return;
@@ -102,13 +88,16 @@ function safeInitChart(el) {
 }
 
 function renderBetChart(type, el) {
-  fetchData(`${base}js/data.json`).then((data) => {
+  fetchData(`${base}/chart/data.json`).then((data) => {
     const betData = data[type].bet;
     const isMobile = window.innerWidth < 768;
     const chart = safeInitChart(el);
     chart.setOption({
       backgroundColor: "#fff",
-      tooltip: { trigger: "item" },
+      tooltip: {
+        trigger: "item",
+        formatter: (params) => `${params.marker}${params.name}：${params.value}K (${params.percent}%)`,
+      },
       legend: {
         orient: isMobile ? "horizontal" : "vertical",
         top: isMobile ? "bottom" : "middle",
@@ -136,11 +125,19 @@ function renderBetChart(type, el) {
 }
 
 function renderProfitChart(type, el) {
-  fetchData(`${base}/js/data.json`).then((data) => {
+  fetchData(`${base}/chart/data.json`).then((data) => {
     const profitData = data[type].profit;
     const chart = safeInitChart(el);
     chart.setOption({
-      tooltip: { trigger: "axis", axisPointer: { type: "shadow" } },
+      tooltip: {
+        trigger: "axis",
+        axisPointer: { type: "shadow" },
+        formatter: (params) => {
+          return params
+            .map(p => `${p.marker}${p.name}：${p.value}K`)
+            .join('<br/>');
+        },
+      },
       xAxis: { type: "category", data: profitData.map((i) => i.name) },
       yAxis: { type: "value" },
       series: [
@@ -162,11 +159,20 @@ function renderProfitChart(type, el) {
 }
 
 function renderChargeChart(type, el) {
-  fetchData(`${base}/js/summary-data.json`).then((data) => {
+  fetchData(`${base}/chart/summary-data.json`).then((data) => {
     const d = data.chargeWithdraw[type];
     const chart = safeInitChart(el);
     chart.setOption({
-      tooltip: { trigger: "axis" },
+      tooltip: {
+        trigger: "axis",
+        formatter: (params) => {
+          const date = params[0].axisValue;
+          return (
+            `${date}<br/>` +
+            params.map(p => `${p.marker}${p.seriesName}：${p.value}K`).join("<br/>")
+          );
+        },
+      },
       legend: { data: ["充值款", "提现款", "充提差"] },
       xAxis: { type: "category", data: d.date },
       yAxis: { type: "value" },
@@ -199,7 +205,7 @@ function renderChargeChart(type, el) {
 }
 
 function renderMemberChart(type, el) {
-  fetchData(`${base}/js/summary-data.json`).then((data) => {
+  fetchData(`${base}/chart/summary-data.json`).then((data) => {
     const d = data.memberGrowth[type];
     const chart = safeInitChart(el);
     chart.setOption({
@@ -220,16 +226,15 @@ function renderMemberChart(type, el) {
 }
 
 onMounted(() => {
-  charts.forEach((c) => renderChart(c));
-  window.addEventListener("resize", () => {
-    charts.forEach((c) => {
-      const chart = echarts.getInstanceByDom(document.getElementById(c.id));
-      if (chart) chart.resize();
-    });
+  nextTick(() => {
+    charts.forEach((c) => renderChart(c));
   });
+  window.addEventListener("resize", handleResize);
+});
+
+onUnmounted(() => {
+  window.removeEventListener("resize", handleResize);
 });
 </script>
 
-<style>
-
-</style>
+<style></style>
